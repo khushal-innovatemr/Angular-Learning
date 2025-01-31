@@ -1,9 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [],
+  imports: [FormsModule,CommonModule],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.css'
 })
@@ -14,7 +16,20 @@ export class UserProfileComponent {
   company = "Software Developer"
   age = "23"
   isBtnDisabled = true
-  inputVal = "texct"
+  inputVal = "Intern"
+
+  users = [
+    {name:"Rohan",isSingle:true,salary:10000},
+    {name:"Khushal",isSingle:false,salary:20000},
+    {name:"Ronak",isSingle:true,salary:40000},
+    
+  ]
+  interns = [
+    {name:"Dinesh",isSingle:true,salary:30000},
+    {name:"Kautilya",isSingle:false,salary:43000},
+    {name:"Yash",isSingle:false,salary:56000},
+    
+  ]
   
   onChange(){
     console.log("called")
@@ -22,6 +37,7 @@ export class UserProfileComponent {
   
   onChain(e:Event){
     const value = (e.target as HTMLInputElement).value
+    this.inputVal = value;
 
   } 
 }

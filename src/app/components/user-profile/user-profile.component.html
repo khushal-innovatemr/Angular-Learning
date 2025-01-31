@@ -9,14 +9,63 @@
 </h4>
 
 <!-- //Property Binding -->
+
 <!-- Typescript code can be Written as [] after this-->
+
 <button [disabled] = "isBtnDisabled">Click Me!!</button><br>
 <hr>
+
 <!-- Event Binding-->
+
 <input type = "text" (input) = "onChange()"><br>
 <hr>
 <input type = "text" (input) = "onChain($event)"><br>
 <hr>
+
 <!--2 Way Binding-->
+
+<!-- <h3>Out Value-{{inputVal}}</h3> -->
+<!-- <input type = "text" [value] = "inputVal" (input) = "onChain($event)"><hr> -->
+
+<!-- shorter code-->
 <h3>Input Value-{{inputVal}}</h3>
-<input type = "text" [value] = "inputVal" (input) = "onChain($event)"><hr>
+<input type = "text" [(ngModel)] = "inputVal"><hr>
+
+<!-- //control flow statements(if-for) -->
+<div>
+    @for(intern of users;track intern.name){
+        @if(intern.salary >20000){
+
+            <h4>
+                Name -{{intern.name}}<br> 
+                Status -{{intern.isSingle? "single" : "Coder"}}<br>
+                Salary -{{intern.salary}}
+            </h4>   
+        }
+        @else{
+            <h4>
+                Name -{{intern.name}}<br> 
+                Status -{{intern.isSingle? "single" : "Coder"}}<br>
+                Salary - Not Applicable
+            </h4>   
+        }
+    }
+</div>
+<hr>
+
+<!-- Structure Directives -->
+<div *ngFor = "let intern of interns">
+        <h4 *ngIf = "intern.salary >42000; else elseBlock">
+                Name -{{intern.name}}<br> 
+                Status -{{intern.isSingle? "single" : "Coder"}}<br>
+                Salary -{{intern.salary}}
+        </h4>
+        <ng-template #elseBlock>
+            <h4>
+                Name -{{intern.name}}<br> 
+                Status -{{intern.isSingle? "single" : "Coder"}}<br>
+                Salary - Not Applicable
+            </h4>   
+        </ng-template>   
+</div>
+

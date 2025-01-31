@@ -1,0 +1,22 @@
+
+<h2>Welcome to Innovate MR! </h2>
+<h4>
+    Name -{{name}}<br> 
+    City -{{city.toUpperCase()}}<br>
+    Status -{{status}}<br> 
+    Role -{{company}}<br> 
+    Age - {{age}}<br>
+</h4>
+
+<!-- //Property Binding -->
+<!-- Typescript code can be Written as [] after this-->
+<button [disabled] = "isBtnDisabled">Click Me!!</button><br>
+<hr>
+<!-- Event Binding-->
+<input type = "text" (input) = "onChange()"><br>
+<hr>
+<input type = "text" (input) = "onChain($event)"><br>
+<hr>
+<!--2 Way Binding-->
+<h3>Input Value-{{inputVal}}</h3>
+<input type = "text" [value] = "inputVal" (input) = "onChain($event)"><hr>

@@ -14,8 +14,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 export class AppComponent {
   users = [
     {name:"Rohan",isSingle:true,salary:10000},
-    {name:"Khushal",isSingle:false,salary:20000},
-    {name:"Ronak",isSingle:true,salary:40000},
+    // {name:"Khushal",isSingle:false,salary:20000},
+    // {name:"Ronak",isSingle:true,salary:40000},
   ]
   title = 'one';
   recievedData(e:User){

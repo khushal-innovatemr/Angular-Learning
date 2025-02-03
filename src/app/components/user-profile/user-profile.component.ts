@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { booleanAttribute, Component, Input, numberAttribute, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { User } from '../../../models/user';
+import { HighlightDirective } from '../../directives/highlight.directive';
 import { CountrycodePipe } from '../../pipes/countrycode.pipe';
 
 function formatName(value: string) {
@@ -11,7 +12,7 @@ function formatName(value: string) {
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [FormsModule, CommonModule,CountrycodePipe],
+  imports: [FormsModule, CommonModule,CountrycodePipe,HighlightDirective],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.css'
 })
@@ -55,5 +56,20 @@ export class UserProfileComponent {
   @Output() myEvent = new EventEmitter<User>()
   sendData() {
     this.myEvent.emit({ name: this.nam_e, newSalary: 76884 })
+  }
+  bgColor = "blue";
+
+  constructor(){
+    //init properties
+    //dependancy injection
+    //event listner register
+    console.log("constructor called");
+  }
+
+  ngOnInit(){
+    //init properties
+    //event listner register
+    //initial api call
+    console.log("ngOnInt called ")
   }
 }

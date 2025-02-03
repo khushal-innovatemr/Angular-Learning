@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { booleanAttribute, Component, Input, numberAttribute, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { User } from '../../../models/user';
+import { CountrycodePipe } from '../../pipes/countrycode.pipe';
 
 function formatName(value: string) {
   return "" + value;
@@ -10,7 +11,7 @@ function formatName(value: string) {
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule,CountrycodePipe],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.css'
 })
@@ -23,6 +24,7 @@ export class UserProfileComponent {
   fees = "2700"
   isBtnDisabled = true
   inputVal = "Intern"
+  phoneno = 12345609876
 
   users = [
     { name: "Rohan", isSingle: true, salary: 10000 },

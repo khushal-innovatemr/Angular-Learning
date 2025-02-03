@@ -1,71 +1,86 @@
+<h4> 
+    Name - {{name |uppercase}}<br> 
+    City - {{city.toUpperCase()}}<br>
+    Status - {{status}}<br> 
+    Role - {{company}}<br> 
+    Fees - {{fees|currency:"INR"}}<br>
+</h4> 
 
-<h2>Welcome to Innovate MR! </h2>
-<h4>
-    Name -{{name}}<br> 
-    City -{{city.toUpperCase()}}<br>
-    Status -{{status}}<br> 
-    Role -{{company}}<br> 
-    Age - {{age}}<br>
-</h4>
 
-<!-- //Property Binding -->
+Property Binding
+<button [disabled]="isBtnDisabled">Click Me!!</button><br>
 
-<!-- Typescript code can be Written as [] after this-->
-
-<button [disabled] = "isBtnDisabled">Click Me!!</button><br>
+ Event Binding
+<input type="text" (input)="onChange()"><br>
 <hr>
+<input type="text" (input)="onChain($event)"><br> 
 
-<!-- Event Binding-->
+<!-- 2 Way Binding -->
+<!-- <h3>Out Value - {{inputVal}}</h3> -->
+<!-- <input type="text" [value]="inputVal" (input)="onChain($event)"><hr> -->
 
-<input type = "text" (input) = "onChange()"><br>
-<hr>
-<input type = "text" (input) = "onChain($event)"><br>
-<hr>
+<!-- shorter code using ngModel -->
+<!-- <h3>Input Value - {{inputVal}}</h3> -->
+<!-- <input type="text" [(ngModel)]="inputVal"> -->
 
-<!--2 Way Binding-->
-
-<!-- <h3>Out Value-{{inputVal}}</h3> -->
-<!-- <input type = "text" [value] = "inputVal" (input) = "onChain($event)"><hr> -->
-
-<!-- shorter code-->
-<h3>Input Value-{{inputVal}}</h3>
-<input type = "text" [(ngModel)] = "inputVal"><hr>
-
-<!-- //control flow statements(if-for) -->
-<div>
-    @for(intern of users;track intern.name){
-        @if(intern.salary >20000){
-
+<!-- control flow statements(if-for) -->
+<!-- <div>
+    @for(intern of users; track intern.name) {
+        @if(intern.salary > 20000) {
             <h4>
-                Name -{{intern.name}}<br> 
-                Status -{{intern.isSingle? "single" : "Coder"}}<br>
-                Salary -{{intern.salary}}
+                Name - {{intern.name}}<br> 
+                Status - {{intern.isSingle ? "single" : "Coder"}}<br>
+                Salary - {{intern.salary}}
             </h4>   
-        }
-        @else{
+        } @else {
             <h4>
-                Name -{{intern.name}}<br> 
-                Status -{{intern.isSingle? "single" : "Coder"}}<br>
+                Name - {{intern.name}}<br> 
+                Status - {{intern.isSingle ? "single" : "Coder"}}<br>
                 Salary - Not Applicable
             </h4>   
         }
     }
-</div>
-<hr>
+</div> -->
 
-<!-- Structure Directives -->
-<div *ngFor = "let intern of interns">
-        <h4 *ngIf = "intern.salary >42000; else elseBlock">
-                Name -{{intern.name}}<br> 
-                Status -{{intern.isSingle? "single" : "Coder"}}<br>
-                Salary -{{intern.salary}}
-        </h4>
-        <ng-template #elseBlock>
-            <h4>
-                Name -{{intern.name}}<br> 
-                Status -{{intern.isSingle? "single" : "Coder"}}<br>
-                Salary - Not Applicable
-            </h4>   
-        </ng-template>   
+<!-- Structure Directives
+<div *ngFor="let intern of interns">
+    <h4 *ngIf="intern.salary > 42000; else elseBlock">
+        Name - {{intern.name}}<br> 
+        Status - {{intern.isSingle ? "single" : "Coder"}}<br>
+        Salary - {{intern.salary}}
+    </h4>
+    <ng-template #elseBlock>
+        <h4>
+            Name - {{intern.name}}<br> 
+            Status - {{intern.isSingle ? "single" : "Coder"}}<br>
+            Salary - Not Applicable
+        </h4>   
+    </ng-template>  
+</div> -->
+
+<div *ngFor="let intern of users">
+    @switch(intern.salary) {
+        @case(30000) {
+            <div>
+                {{intern.isSingle}}<hr>
+            </div>
+        }
+        @case(43000) {
+            <div>
+                <h3>
+                    {{intern.name}}
+                </h3>
+            </div>
+        }
+    } 
 </div>
 
+<h3>
+    {{nam_e}}<br> 
+    Status {{isSingle ? ": Single" : "Coder"}}<br> 
+    salary : {{salary}}<br>
+</h3>
+<p>
+    Today's Special: {{item}}<br>
+</p>
+<button (click)="sendData()">Send Data</button>

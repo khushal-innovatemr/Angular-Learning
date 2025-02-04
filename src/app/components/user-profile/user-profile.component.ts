@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { booleanAttribute, Component, Input, numberAttribute, Output, EventEmitter } from '@angular/core';
+import { booleanAttribute, Component, Input, numberAttribute, Output, EventEmitter, OnInit, OnDestroy, OnChanges, SimpleChanges, viewChild, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { User } from '../../../models/user';
 import { HighlightDirective } from '../../directives/highlight.directive';
@@ -16,7 +16,7 @@ function formatName(value: string) {
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.css'
 })
-export class UserProfileComponent {
+export class UserProfileComponent implements OnInit,OnDestroy,OnChanges ,AfterViewInit{
   name = "Khushal Sethi"
   status = "Intern"
   city = "Surat"
@@ -59,17 +59,40 @@ export class UserProfileComponent {
   }
   bgColor = "blue";
 
+  @ViewChild("myheading") heading?:ElementRef
+
   constructor(){
-    //init properties
+    //initialize properties
     //dependancy injection
     //event listner register
-    console.log("constructor called");
+    console.log("constructor called",this.nam_e);
+    console.log("ngOnInit called",this.heading?.nativeElement.textContent)
   }
 
+  
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("",changes)
+    console.log("ngOnInit called",this.heading?.nativeElement.textContent)
+    //notify karna ho changes toh we can implement this 
+  }
+  
   ngOnInit(){
-    //init properties
+    //initialize properties
     //event listner register
     //initial api call
-    console.log("ngOnInt called ")
+    console.log("ngOnInt called ",this.nam_e)
+    console.log("ngOnInit called",this.heading?.nativeElement.textContent)
   }
+  ngAfterViewInit(): void {
+    console.log("After View Init")
+    console.log("ngOnInit called",this.heading?.nativeElement.textContent)
+  }
+  
+  ngOnDestroy(){
+    console.log("component destroyed")
+  }
+  
+ 
+
 }
